@@ -1,4 +1,4 @@
-export { ExportFormat, type BuiltInExportFormat } from "./exportFormat";
+export { ExportFormat, type BuiltInExportFormat } from "./exportFormat.js";
 export {
   type FileExportOptions,
   type HeadlessRenderOptions,
@@ -9,6 +9,6 @@ export {
   type RendererComponent,
   type RendererPlugin,
   type RendererProps,
-} from "./types";
-export { getRendererDirectiveProperties } from "./directives";
-export { RendererRegistry } from "./registry";
+} from "./types.js";
+export { getRendererDirectiveProperties } from "./directives.js";
+export { RendererRegistry } from "./registry.js";

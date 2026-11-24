@@ -1,9 +1,5 @@
 import { describe, test, expect } from "vitest";
-import {
-  ExportFormat,
-  RendererPlugin,
-  RendererRegistry,
-} from "src/rendererApi";
+import { ExportFormat, RendererPlugin, RendererRegistry } from "src/index";
 import { Dag, DagStyle } from "@formulavize/compiler-frontend-fiz/dag";
 
 const EMPTY_STYLE: DagStyle = {

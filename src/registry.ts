@@ -1,5 +1,5 @@
 import { Dag } from "@formulavize/compiler-frontend-fiz/dag";
-import { RendererDescriptor, RendererPlugin } from "./types";
+import { RendererDescriptor, RendererPlugin } from "./types.js";
 
 /**
  * The set of renderers available to draw a dag.

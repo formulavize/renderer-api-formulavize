@@ -1,6 +1,6 @@
-import { Component } from "vue";
+import type { Component } from "vue";
 import { Dag } from "@formulavize/compiler-frontend-fiz/dag";
-import { ExportFormat } from "./exportFormat";
+import { ExportFormat } from "./exportFormat.js";
 
 /**
  * Options for exporting a file from a renderer.
