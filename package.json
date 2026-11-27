@@ -1,0 +1,70 @@
+{
+  "name": "@formulavize/renderer-api-formulavize",
+  "version": "1.0.0",
+  "description": "The renderer contract for formulavize: what a renderer must implement to draw a fiz Dag",
+  "keywords": [
+    "fiz",
+    "formulavize",
+    "renderer",
+    "plugin"
+  ],
+  "homepage": "https://github.com/formulavize/renderer-api-formulavize#readme",
+  "bugs": {
+    "url": "https://github.com/formulavize/renderer-api-formulavize/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/formulavize/renderer-api-formulavize.git"
+  },
+  "license": "MIT",
+  "author": "anthologen",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json",
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "import": "./dist/*.js"
+    }
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "test": "tests"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "prepack": "run-s build test",
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:format": "prettier . --check",
+    "format": "prettier . --write",
+    "all": "run-s build test"
+  },
+  "peerDependencies": {
+    "@formulavize/compiler-frontend-fiz": "^1.0.0",
+    "vue": "^3.5.44"
+  },
+  "peerDependenciesMeta": {
+    "vue": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@formulavize/compiler-frontend-fiz": "^1.0.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.9.10",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.5",
+    "vue": "^3.5.44"
+  }
+}
