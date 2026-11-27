@@ -4,16 +4,8 @@ The renderer contract for [formulavize](https://github.com/formulavize). It
 defines what a renderer must implement to draw a compiled fiz `Dag`, and the
 registry that resolves which renderer a recipe selected.
 
-This package holds **only the contract**. It contains no renderer, no drawing
-code, and no vocabulary belonging to any particular renderer.
-
-```
-@formulavize/renderer-api-formulavize   ← this package
-        ▲              ▲              ▲
-        │              │              │
-  renderer-      renderer-       editor-formulavize
-  cytoscape      minimal         (and the CLI)
-```
+This package holds **only the contract**. It contains no renderer, drawing code,
+or vocabulary belonging to any particular renderer.
 
 ## Install
 
@@ -47,7 +39,7 @@ import {
 
 ## Writing a renderer
 
-A renderer is a **plugin**: a descriptor plus the component that draws it.
+A renderer is a **plugin**: a descriptor plus the drawing component.
 
 ```ts
 import {
@@ -80,12 +72,12 @@ else in the app needs to learn your renderer's name.
 ### Why the descriptor and the plugin are separate
 
 A `RendererDescriptor` is deliberately free of the drawing component so that a
-node-side caller — the CLI — can describe a renderer, resolve it from a recipe,
-and ask it to render, without loading a Vue component that would reach for
-`window` the moment it is imported. A renderer that can draw outside a browser
-puts that on its descriptor's optional `renderHeadless`. One that cannot simply
-omits it, and the CLI reports that it cannot draw rather than silently falling
-through to a renderer the recipe never asked for.
+node-side caller (i.e. the CLI) can describe a renderer, resolve it from a
+recipe, and ask it to render, without loading a Vue component that would reach 
+for `window` the moment it is imported. A renderer that can draw outside a 
+browser puts that on its descriptor's optional `renderHeadless`. One that cannot 
+simply omits it, and the CLI reports that it cannot draw rather than silently 
+falling through to another renderer the recipe never asked for.
 
 ### Offering editor completions
 
@@ -113,8 +105,8 @@ example, offering only the options the chosen `layout` accepts). Omitting
   last `^<name>{ }` directive decides, matching the "later declarations
   override earlier" precedence used for style properties.
 - **Unregistered names are skipped.** The compiler does not validate a renderer
-  name against the registry, so a directive naming an unknown renderer is
-  ignored rather than being an error.
+  name against the registry, so a renderer directive naming an unknown renderer
+  is ignored rather than being an error.
 - **Absent falls back** to the default (the first registered, unless another is
   named).
 
